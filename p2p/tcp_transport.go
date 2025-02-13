@@ -25,7 +25,7 @@ func NewTCPPeer(conn net.Conn, outbound bool) *TCPPeer {
 
 type TCPTransport struct {
 	listenAddress string
-	listener      net.Listener
+	listener      net.Listener //This binds the program to a specific port and starts listening for incoming client connections.
 
 	mu   sync.RWMutex
 	peer map[net.Addr]Peer
@@ -50,6 +50,8 @@ func (t *TCPTransport) ListenAndAccept() error {
 
 func (t *TCPTransport) startAcceptLoop() {
 	for {
+		//When a client connects, Accept() returns a new conn (net.Conn) object that represents the connection between the server and the client.
+
 		conn, err := t.listener.Accept()
 		if err != nil {
 			fmt.Printf("TCP accept error: %s\n", err)

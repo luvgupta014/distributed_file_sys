@@ -1,10 +1,9 @@
 package main
 
 import (
+	"distributed_file_sys/p2p"
 	"fmt"
 	"log"
-
-	"github.com/anthdm/foreverstone/p2p"
 )
 
 func main() {
