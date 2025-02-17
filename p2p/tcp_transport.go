@@ -2,6 +2,7 @@ package p2p
 
 import (
 	"fmt"
+	"log"
 	"net"
 	"sync"
 )
@@ -56,6 +57,7 @@ func (t *TCPTransport) startAcceptLoop() {
 		if err != nil {
 			fmt.Printf("TCP accept error: %s\n", err)
 		}
+		log.Println("✅ New connection accepted from:", conn.RemoteAddr()) // Log accepted connection
 		go t.handleConn(conn)
 
 	}
